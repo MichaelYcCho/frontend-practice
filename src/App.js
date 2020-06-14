@@ -1,8 +1,13 @@
 import React from "react";
 
 //props.fav 또는 {fav}
-function Food({ name }) {
-  return <h3> I love {name} </h3>;
+function Food({ name, picture }) {
+  return (
+    <div>
+      <h2>I like {name}</h2>
+      <img src={picture} />
+    </div>
+  );
 }
 
 const foodILike = [
@@ -41,7 +46,6 @@ function App() {
       ))}
     </div>
   );
-  // food component에 fav라는 이름의 property를 kimchi라는 value로 준것이다.
 }
 
 export default App;
