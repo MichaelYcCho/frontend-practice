@@ -10,13 +10,14 @@ import App6 from './App6';
 import App7 from './App7';
 import App8 from './App8';
 import App9 from './App9';
+import App10 from './App10';
 import TodoList from 'TodoList';
 import EpisodeList from "EpisodeList";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App9 />
+    <App10 />
   </React.StrictMode>,
   document.getElementById('root')
 );
