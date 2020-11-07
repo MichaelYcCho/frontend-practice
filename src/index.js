@@ -13,11 +13,13 @@ import App9 from './App9';
 import App10 from './App10';
 import TodoList from 'TodoList';
 import EpisodeList from "EpisodeList";
+import Test from './HowToReact/Test';
 import * as serviceWorker from './serviceWorker';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App10 />
+    <Test />
   </React.StrictMode>,
   document.getElementById('root')
 );

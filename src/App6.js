@@ -17,6 +17,7 @@ const App = () => {
     const [state, dispatch] = useReducer(reducer, { myname: '', age: '' });
     const { myname, age } = state;
     const onChange = (e) => {
+        //name 이지만 참조는 type // name = type
         const { name: type, value } = e.target;
         dispatch({ type, value });
     };
