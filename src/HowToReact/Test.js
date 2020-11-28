@@ -1,9 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes, { number } from 'prop-types';
 
 
 
+const Test = () => {
+    const [number, setNumber] = useState(0);
 
+    const add = () => {
+        setNumber(prevNumber => prevNumber + 1);
+    }
+
+    const minus = () => {
+        setNumber(prevNumber => prevNumber - 1);
+    }
+
+    return (
+        <div>
+            <h2> number is : {number}</h2>
+            <button onClick={add}> Add   </button>
+            <button onClick={minus}> Minus </button>
+        </div>
+    );
+}
+
+/*
 class Test extends Component {
     state = {
         number: 0
@@ -31,7 +51,7 @@ class Test extends Component {
     }
 }
 
-
+*/
 
 export default Test;
 
