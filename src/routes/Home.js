@@ -30,6 +30,19 @@ const Home = ({ userObj }) => {
         // const value = event.target.value;
         setNweet(value);
     };
+    const onFileChange = (event) => {
+        const {
+            target: { files }
+        } = event;
+        const theFile = files[0]
+        const reader = new FileReader();
+        // 2. 읽은 파일에 대한 결과를 여기서 출력함 
+        reader.onloadend = (finishedEvent) => {
+            console.log(finishedEvent);
+        }
+        // 1. 여기서 먼저 파일을 읽고 
+        reader.readAsDataURL(theFile);
+    }
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -40,6 +53,7 @@ const Home = ({ userObj }) => {
                     placeholder="What's on your mind?"
                     maxLength={120}
                 />
+                <input type="file" accept="image/*" onChange={onFileChange} />
                 <input type="submit" value="Nweet" />
             </form>
             <div>
