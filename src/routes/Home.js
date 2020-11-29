@@ -6,7 +6,7 @@ import Nweet from "components/Nweet";
 const Home = ({ userObj }) => {
     const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
-    const [attachment, setAttachment] = useState();
+    const [attachment, setAttachment] = useState("")
     useEffect(() => {
         dbService.collection("nweets").onSnapshot((snapshot) => {
             const nweetArray = snapshot.docs.map((doc) => ({
@@ -18,40 +18,45 @@ const Home = ({ userObj }) => {
     }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
-        const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
-        const response = await fileRef.putString(attachment, "data_url");
-        console.log(response);
-        // await dbService.collection("nweets").add({
-        //     text: nweet,
-        //     createdAt: Date.now(),
-        //     creatorId: userObj.uid,
-        // });
-        // setNweet("");
+        let attachmentUrl = "";
+        if (attachment !== "") {
+            const attachmentRef = storageService
+                .ref()
+                .child(`${userObj.uid}/${uuidv4()}`);
+            const response = await attachmentRef.putString(attachment, "data_url");
+            attachmentUrl = await response.ref.getDownloadURL();
+        }
+        const nweetObj = {
+            text: nweet,
+            createdAt: Date.now(),
+            creatorId: userObj.uid,
+            attachmentUrl,
+        };
+        await dbService.collection("nweets").add(nweetObj);
+        setNweet("");
+        setAttachment("");
     };
     const onChange = (event) => {
         const {
             target: { value },
         } = event;
-        // const value = event.target.value;
         setNweet(value);
     };
     const onFileChange = (event) => {
         const {
-            target: { files }
+            target: { files },
         } = event;
-        const theFile = files[0]
+        const theFile = files[0];
         const reader = new FileReader();
-        // 2. 읽은 파일에 대한 결과를 여기서 출력함 
         reader.onloadend = (finishedEvent) => {
             const {
                 currentTarget: { result },
             } = finishedEvent;
             setAttachment(result);
-        }
-        // 1. 여기서 먼저 파일을 읽고 
+        };
         reader.readAsDataURL(theFile);
     };
-    const onClearAttachment = () => setAttachment(null);
+    const onClearAttachment = () => { setAttachment("") }
     return (
         <div>
             <form onSubmit={onSubmit}>
