@@ -6,7 +6,7 @@ import Profile from "routes/Profile";
 import Navigation from "components/Navigation";
 
 //App.js 에서 매개인자 날아왔음
-const AppRouter = ({ isLoggedIn, userObj }) => {
+const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
         <Router>
             {isLoggedIn && <Navigation userObj={userObj} />}
@@ -17,7 +17,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
                             <Home userObj={userObj} />
                         </Route>
                         <Route exact path="/profile">
-                            <Profile userObj={userObj} />
+                            <Profile userObj={userObj} refreshUser={refreshUser} />
                         </Route>
                     </>
                 ) : (
