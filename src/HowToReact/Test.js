@@ -1,8 +1,29 @@
 import React, { useState } from 'react';
-import PropTypes, { number } from 'prop-types';
+
+
+const Test = () => {
+    const [answer, setAnswer] = useState();
+
+    const onChange = (e) => {
+        setAnswer(e.target.value)
+
+    }
+
+    return (
+        <>
+            <input type="text" placeholder="Write Something" onChange={onChange} />
+            <div id="answer">{answer}</div>
+        </>
+    )
+}
 
 
 
+export default Test;
+
+
+
+/*
 const Test = () => {
     const [number, setNumber] = useState(0);
 
@@ -23,7 +44,6 @@ const Test = () => {
     );
 }
 
-/*
 class Test extends Component {
     state = {
         number: 0
@@ -53,13 +73,13 @@ class Test extends Component {
 
 */
 
-export default Test;
-
 
 
 
 
 /*
+import PropTypes, { number } from 'prop-types';
+
 Test.defaultProps = {
     food: '비빔밥',
     name: "김민수"
