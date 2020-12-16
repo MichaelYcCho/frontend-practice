@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import ToDosProvider from "./context";
 
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+  <ToDosProvider>
+    <App />
+  </ToDosProvider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
