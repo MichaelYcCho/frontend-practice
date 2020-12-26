@@ -1,22 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Test extends Component {
-    input = React.createRef();
 
-    inputClick = () => {
-        this.input.current.focus();
-    };
+const Test = () => {
+    const brand = ['Samsung', 'Apple', 'LG', 'SK']
 
-    render() {
-        return (
-            <>
-                <input ref={this.input} />
-                <button onClick={this.inputClick}>Focus Input</button>
-
-            </>
-        );
-    }
+    const brandList = brand.map(name => <p>{name}</p>);
+    return( 
+    <div>
+    {brandList}
+    </div>
+    );
 }
+
 
 export default Test;
 
