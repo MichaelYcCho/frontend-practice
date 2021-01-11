@@ -1,15 +1,13 @@
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 100vh;
+}
+
 .box {
-  background: blue;
-  width: 100px;
-  height: 100px;
-  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: peru;
   color: white;
-}
-
-.box:nth-child(2) {
-  margin-left: 35px;
-}
-
-.box:nth-child(3) {
-  margin-left: 20px;
 }
