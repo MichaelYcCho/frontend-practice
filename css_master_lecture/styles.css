@@ -1,10 +1,8 @@
 .father {
   display: flex;
-  flex-direction: row;
-  /* Main Axis */
   justify-content: space-around;
-  /* Cross Axis */
   height: 100vh;
+  flex-wrap: wrap;
 }
 
 .child {
@@ -13,8 +11,7 @@
   background: peru;
   color: white;
   font-size: 50px;
-}
-
-.child:nth-child(2) {
-  order: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
