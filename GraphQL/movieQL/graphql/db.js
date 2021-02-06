@@ -46,6 +46,6 @@ export const people = [
 
 // 해당하는 영화들을 return
 export const getById = id => {
-    const filterdPeople = people.filter(person => people.id === id)
+    const filteredPeople = people.filter(person => person.id === String(id))
     return filteredPeople[0]
 }
