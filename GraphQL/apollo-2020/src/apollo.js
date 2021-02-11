@@ -1,21 +1,30 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-
-const cache = new InMemoryCache();
-const link = new createHttpLink({
-    uri: "http://localhost:4000",
-    resolvers: {
-        Movie: {
-        isLiked: () => false
-        }
-    }
-});
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 const client = new ApolloClient({
-    cache: cache,
-    link: link,
-
-})
-
+    uri: 'http://localhost:4000',
+    cache: new InMemoryCache(),
+    resolvers: {
+        Movie: {
+            isLiked: () => false,
+        },
+        Mutation: {
+            toggleLikeMovie: (_, { id, isLiked }, { cache }) => {
+                console.log(isLiked);
+                const myMovie = {
+                    __typename: 'Movie',
+                    id: `${id}`,
+                    isLiked: `${isLiked}`,
+                };
+                cache.modify({
+                    id: cache.identify(myMovie),
+                    fields: {
+                        isLiked(cachedName) {
+                            return !isLiked;
+                        },
+                    },
+                });
+            },
+        },
+    },
+});
 export default client;
-
-
