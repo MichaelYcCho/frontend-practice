@@ -12,7 +12,7 @@ function getTime(){
                             seconds < 10 ? `0${seconds}`: seconds}`;
 
 }    
-
+//초기화
 function init(){
     getTime();
     setInterval(getTime, 1000);
