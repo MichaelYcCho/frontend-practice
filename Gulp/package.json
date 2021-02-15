@@ -25,6 +25,7 @@
     "build": "gulp build"
   },
   "dependencies": {
-    "del": "^6.0.0"
+    "del": "^6.0.0",
+    "gulp-webserver": "^0.9.1"
   }
 }
