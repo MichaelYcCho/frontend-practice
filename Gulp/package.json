@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "del": "^6.0.0",
+    "gulp-image": "^6.2.1",
     "gulp-webserver": "^0.9.1"
   }
 }
