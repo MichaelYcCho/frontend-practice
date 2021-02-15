@@ -1,0 +1,26 @@
+{
+  "name": "supergulp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michael-cho77/supergulp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michael-cho77/supergulp/issues"
+  },
+  "homepage": "https://github.com/michael-cho77/supergulp#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/register": "^7.12.1",
+    "@babel/core": "^7.12.3"
+  },
+  "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build"
+  }
+}
