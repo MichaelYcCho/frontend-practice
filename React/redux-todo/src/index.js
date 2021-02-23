@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from "./components/App";
-import ToDosProvider from "./context";
+import App from "./App";
+
 
 
 ReactDOM.render(
-  <ToDosProvider>
-    <App />
-  </ToDosProvider>,
+  <App />,
   document.getElementById("root")
 );
 
