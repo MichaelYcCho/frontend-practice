@@ -1,27 +1,49 @@
 
-import React, { useReducer } from "react";
+import React, { useState, useReducer } from "react";
 
-const INCREMENT = "increment";
-const DECREMENT = "decrement";
+
+const initialState = {
+    toDos: []
+}
+
+const ADD = "increment";
+
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case INCREMENT:
-            return { count: state.count + 1 };
-        case DECREMENT:
-            return { count: state.count - 1 };
+        case ADD:
+            return { toDos: [...state.toDos, { text: action.payload }] };
         default:
-            throw new Error();
+            return;
     }
 };
 
 function App() {
-    const [state, dispatch] = useReducer(reducer, { count: 0 });
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const [newToDo, setNewToDo] = useState("");
+    const onSubmit = e => {
+        e.preventDefault();
+        dispatch({ type: ADD, payload: newToDo })
+    };
+    const onChange = e => {
+        const {
+            target: { value }
+        } = e;
+        setNewToDo(value)
+    }
     return (
         <>
-            <h1>{state.count}</h1>
-            <button onClick={() => dispatch({ type: INCREMENT })}>Add</button>
-            <button onClick={() => dispatch({ type: DECREMENT })}>Remove</button>
+            <h1>To Dos</h1>
+            <form onSubmit={onSubmit}>
+                <input type="text" placeholder="Write to do" onChange={onChange} />
+            </form>
+
+            <ul>
+                <h2>To Dos</h2>
+                {state.toDos.map((toDo, index) => (
+                    <li key={index}>{toDo.text}</li>
+                ))}
+            </ul>
         </>
     );
 }
