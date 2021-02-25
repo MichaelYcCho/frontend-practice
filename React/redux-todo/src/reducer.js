@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { ADD, DEL, COMPLETE, UNCOMPLETE } from "./action";
+import { ADD, DEL, COMPLETE, UNCOMPLETE } from "./actions";
 
 export const initialState = {
     toDos: [],
