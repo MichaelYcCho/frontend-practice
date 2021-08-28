@@ -1,16 +1,9 @@
 import React from "react";
-import { atom, useRecoilValue, useSetRecoilState } from "recoil";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { todoListState } from "../store";
 
 function Todos() {
-    const [persistedTodoList, setPersistedTodoList] = useLocalStorage(
-        "todoList",
-        []
-    );
-    const todoListState = atom({
-        key: "todoListState",
-        default: persistedTodoList,
-    });
+
     const todoList = useRecoilValue(todoListState);
 
     const setTodoList = useSetRecoilState(todoListState);
@@ -19,7 +12,7 @@ function Todos() {
             const newTodoList = oldTodoList.filter(function (el, i) {
                 return index !== i;
             });
-            setPersistedTodoList(newTodoList);
+            window.localStorage.setItem('todoList', JSON.stringify(newTodoList));
             return newTodoList;
         });
     };
@@ -35,7 +28,7 @@ function Todos() {
                     return todo;
                 }
             });
-            setPersistedTodoList(newTodoList);
+            window.localStorage.setItem('todoList', JSON.stringify(newTodoList));
             return newTodoList;
         });
     };

@@ -1,22 +1,10 @@
 import React from "react";
-import { atom, useRecoilState, useSetRecoilState } from "recoil";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { textState, todoListState } from "../store";
 
 function AddTodo({ }) {
-    const [persistedTodoList, setPersistedTodoList] = useLocalStorage(
-        "todoList",
-        []
-    );
-    const textState = atom({
-        key: "textState", // unique ID (with respect to other atoms/selectors)
-        default: "", // default value (aka initial value)
-    });
-    const [text, setText] = useRecoilState(textState);
 
-    const todoListState = atom({
-        key: "todoListState",
-        default: persistedTodoList,
-    });
+    const [text, setText] = useRecoilState(textState);
     const setTodoList = useSetRecoilState(todoListState);
 
     const addItem = (e) => {
@@ -32,7 +20,7 @@ function AddTodo({ }) {
                     isComplete: false,
                 },
             ];
-            setPersistedTodoList(newTodoList);
+            window.localStorage.setItem('todoList', JSON.stringify(newTodoList));
             return newTodoList;
         });
         setText("");
