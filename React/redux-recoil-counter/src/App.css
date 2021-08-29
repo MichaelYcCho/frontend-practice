@@ -1,0 +1,19 @@
+.tc {
+  text-align: center;
+}
+
+.pt3 {
+  padding-top: 1rem;
+}
+
+.ph2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.pb4 {
+  padding-bottom: 2rem;
+}
+
+.br3 {
+  border-radius: 0.5rem;
+}

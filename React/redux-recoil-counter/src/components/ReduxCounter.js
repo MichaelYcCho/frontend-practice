@@ -9,7 +9,8 @@ export default function Counter() {
     const dispatch = useDispatch();
 
     return (
-        <div className="counter">
+        <div className="counter tc">
+            <h1>Redux 카운터</h1>
             Count: {counter.count}
             <br />
             <button onClick={() => dispatch(update(-1))}>1 감소</button>
