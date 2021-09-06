@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export default function Input({ type, placeholder }) {
-    return <StyledInput type={type} placeholder={placeholder} />;
+  return <StyledInput type={type} placeholder={placeholder} />;
 }
 
 const StyledInput = styled.input`
@@ -14,6 +14,7 @@ const StyledInput = styled.input`
   outline: none;
   color: #3c354e;
   font-size: 1rem;
+  color: #fff;
   font-weight: bold;
   &:focus {
     display: inline-block;
