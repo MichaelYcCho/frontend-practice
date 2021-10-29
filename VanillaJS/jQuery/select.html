@@ -1,0 +1,134 @@
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+
+
+  <select id="slctColors" name="slctColors">
+    <optgroup label="- Red Colors">
+        <option value="#cd5c5c" selected>Indian-Red</option>
+        <option value="#ff0000" disabled>Red</option>
+        <option value="#8b0000">Dark-Red</option>
+    </optgroup>
+    <optgroup label="- Green Colors">
+        <option value="#90ee90">Light-Green</option>
+        <option value="#008000">Green</option>
+        <option value="#006400">Dark-Green</option>
+    </optgroup>
+    <optgroup label="- Blue Colors">
+        <option value="#add8e6">Light-Blue</option>
+        <option value="#0000ff">Blue</option>
+        <option value="#00008b">Dark-Blue</option>
+    </optgroup>
+    <option value="#808080">Gray</option>
+    <option value="#000000">Black</option>
+</select>
+
+
+<script>
+  /* Checkbox change event */
+$('#slctColors').change(function() {
+  var value = $(this).val();
+  $(this).css('color', value);
+});
+
+
+
+//Value 찾기
+/* Selected Value */
+var text = $('#slctColors option:selected').text();
+var value = $('#slctColors').val();
+ 
+/* Deselected Values */
+var str = "";
+$('#slctColors option:not(:selected)').each(function(){
+    var text = $(this).text();
+    var value = $(this).val();
+    str += text + "/" + value + ", ";
+});
+
+/* Blue로 바꾸기 */
+$('#slctColors').val('#0000ff');
+ 
+
+// value는 모르고 text만 알때
+$('#slctColors option').each(function() {
+    if($(this).text() == 'Blue')
+        $(this).prop('selected', true);
+});
+ 
+
+
+//Value 바꾸기 
+/* 5번째(Green)로 바꾸기 */
+$('#slctColors option:eq(4)').prop('selected', true);   // CSS Selector eq로 찾기
+$('#slctColors option').eq(4).prop('selected', true);   // jQuery eq() function 사용
+
+
+//개수 확인
+/* 전체 option 개수 */
+var num = $('#slctColors option').length;
+ 
+/* 전체 Selected option 개수 */
+var num = $('#slctColors option:selected').length;
+ 
+/* 전체 Selected option 개수 */
+var num = $('#slctColors option:not(:selected)').length;
+
+
+//Disabled
+/* Select 여부 확인 */
+var b = $('#slctColors').prop('disabled');      // jQuery 1.6 이상 (jQuery 1.6 미만에는 prop()가 없음, checked, selected, disabled는 꼭 prop()를 써야함)
+// var b = $('#slctColors').attr('disabled');   // jQuery 1.6 미만 (jQuery 1.6 이상에서는 checked, undefined로 return됨)
+// var b = $('#slctColors').is('disabled');
+ 
+ 
+/* Select Disabled 설정 */
+$('#slctColors').prop('disabled', true);
+ 
+/* Select Disabled 해제 */
+$('#slctColors').prop('disabled', false);
+ 
+/* Select Disabled 반전 */
+$('#slctColors').prop('disabled', !$('#slctColors').prop('disabled'));
+
+
+
+//Option별 Disabled
+/* Red Disabled 여부 확인 */
+var b = false;
+// value로 찾기
+b = $('#slctColors option[value="#ff0000"]').prop('disabled');
+ 
+// value는 모르고 text만 알때
+// $('#slctColors option').each(function() {
+//  if($(this).text() == 'Red')
+//      b = $(this).prop('disabled');
+// });
+ 
+ 
+/* Red Disabled 설정 */
+$('#slctColors option[value="#ff0000"]').prop('disabled', true);
+ 
+/* Red Disabled 해제 */
+$('#slctColors option[value="#ff0000"]').prop('disabled', false);
+ 
+/* Red Disabled 반전 */
+var $optionRed = $('#slctColors option[value="#ff0000"]');
+$optionRed.prop('disabled', !$optionRed.prop('disabled'));
+ 
+/* 전체 Option Disabled 설정 */
+$('#slctColors option').each(function() {
+    $(this).prop('disabled', true);
+});
+ 
+/* 전체 Option Disabled 해제 */
+$('#slctColors option').each(function() {
+    $(this).prop('disabled', false);
+});
+ 
+/* 전체 Option Disabled 반전 */
+$('#slctColors option').each(function() {
+    $(this).prop('disabled', !$(this).prop('disabled'));
+});
+</script>
