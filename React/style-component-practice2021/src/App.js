@@ -12,11 +12,21 @@ const Circle = styled(Box)`
   border-radius: 50px;
 `;
 
+const Btn = styled.button`
+  color: white;
+  background-color: tomato;
+  border: 0;
+  border-raduis: 15px;
+`;
+
+const Link = styled(Btn)`
+`;
+
 function App() {
   return (
     <Father>
-      <Box bgColor="teal" />
-      <Circle bgColor="tomato" />
+      <Btn >Log In</Btn>
+      <Btn as="a" > Log in</Btn>
     </Father>
   );
 }
